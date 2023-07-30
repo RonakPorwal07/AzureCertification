@@ -53,3 +53,22 @@ teamMembers.forEach(member => {
     memberInfo.classList.toggle("hide");
   });
 });
+  // Interaction 7: Fetch data from Azure Function when the page loads
+
+function fetchFromAzureFunction() {
+  fetch('https://MyFunctionAPP-Ronak.azurewebsites.net/api/hello')
+    .then(response => response.text())
+    .then(data => {
+      console.log(data); // This will log "Hello, Azure Function!" to the console.
+      // You can now use the 'data' to update your website's content as needed.
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+// Call the function to fetch data when the page loads
+document.addEventListener('DOMContentLoaded', fetchFromAzureFunction);
+
+
+

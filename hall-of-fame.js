@@ -42,3 +42,23 @@ const scrollToTopButton = document.getElementById("scrollToTopButton");
 scrollToTopButton.addEventListener("click", function() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// hall-of-fame.js
+
+// Function to fetch and display learner images from Azure Blob Storage
+function displayLearnerImages() {
+    const containerUrl = "https://amishistorage.blob.core.windows.net/learningversecontainer"; // Replace with your Azure Blob Storage container URL
+    const learners = document.querySelectorAll(".learner");
+  
+    learners.forEach((learner, index) => {
+      const img = learner.querySelector("img");
+      const imageUrl = `${containerUrl}/learner${index + 1}.png`; // Assuming the images are named as learner1.png, learner2.png, etc.
+  
+      // Set the image source to the Azure Blob Storage URL
+      img.src = imageUrl;
+    });
+  }
+  
+  // Call the function to display learner images from Azure Blob Storage when the page loads
+  document.addEventListener('DOMContentLoaded', displayLearnerImages);
+  
